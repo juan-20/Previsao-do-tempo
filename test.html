@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- FA -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <!--.ENV  -->
+    <script src="https://cdn.jsdelivr.net/npm/dotenv@8.2.0/lib/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+    <!-- <button onclick="clima()" >Click me</button> -->
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+    <iframe id="load-selo" allowtransparency="true" frameborder="0"
+        data-url="https://streaming.climaaovivo.com.br/belohorizonte3.mg/embed.html"
+        src="https://streaming.climaaovivo.com.br/belohorizonte3.mg/embed.html" width="400px" height="200px"
+        scrolling="no" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+
+    <div class="temperature">
+        <div class="temperature-header">
+            <h1 id="city"></h1>
+        </div>
+        <div class="temperature-days">
+            <p id="Mon" class="day">SEG</p>
+            <p id="Tue" value="ter" class="day">TER</p>
+            <p id="Wed" class="day">QUA</p>
+            <p id="Thu" class="day">QUI</p>
+            <p id="Fri" class="day">SEX</p>
+            <p id="Sat" class="day">SAB</p>
+            <p id="Sun" class="day">DOM</p>
+            <i onclick="nextday()" class="fas fa-chevron-right"></i>
+            <br />
+        </div>
+
+        <div class="temperature-numbers">
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                viewBox="0 0 50.768 50.771">
+                <ellipse id="Elipse_8" data-name="Elipse 8" cx="10.266" cy="10.266" rx="10.266" ry="10.266"
+                    transform="translate(15.118 15.118)" fill="#fff" stroke="#9a9a9a" stroke-width="3"></ellipse>
+                <path id="Caminho_38" data-name="Caminho 38"
+                    d="M62.451,11.216h0A1.231,1.231,0,0,1,61.22,9.985V1.231A1.231,1.231,0,0,1,62.451,0h0a1.231,1.231,0,0,1,1.231,1.231V9.985A1.231,1.231,0,0,1,62.451,11.216Z"
+                    transform="translate(-37.067 0)" fill="#9a9a9a"></path>
+                <path id="Caminho_39" data-name="Caminho 39"
+                    d="M62.451,111.47h0a1.231,1.231,0,0,1-1.231-1.231v-8.758a1.231,1.231,0,0,1,1.231-1.231h0a1.231,1.231,0,0,1,1.231,1.231v8.755a1.231,1.231,0,0,1-1.231,1.235Z"
+                    transform="translate(-37.067 -60.699)" fill="#9a9a9a"></path>
+                <path id="Caminho_40" data-name="Caminho 40"
+                    d="M89.187,26.277h0a1.231,1.231,0,0,1,0-1.74l6.19-6.19a1.231,1.231,0,0,1,1.74,0h0a1.231,1.231,0,0,1,0,1.74l-6.19,6.19A1.231,1.231,0,0,1,89.187,26.277Z"
+                    transform="translate(-53.783 -10.891)" fill="#9a9a9a"></path>
+                <path id="Caminho_41" data-name="Caminho 41"
+                    d="M18.3,97.117h0a1.231,1.231,0,0,1,0-1.74l6.19-6.19a1.231,1.231,0,0,1,1.74,0h0a1.231,1.231,0,0,1,0,1.74l-6.19,6.19A1.231,1.231,0,0,1,18.3,97.117Z"
+                    transform="translate(-10.861 -53.783)" fill="#9a9a9a"></path>
+                <path id="Caminho_42" data-name="Caminho 42"
+                    d="M100.25,62.451h0a1.231,1.231,0,0,1,1.231-1.231h8.755a1.231,1.231,0,0,1,1.231,1.231h0a1.231,1.231,0,0,1-1.231,1.231h-8.755A1.231,1.231,0,0,1,100.25,62.451Z"
+                    transform="translate(-60.699 -37.067)" fill="#9a9a9a"></path>
+                <path id="Caminho_43" data-name="Caminho 43"
+                    d="M0,62.451H0A1.231,1.231,0,0,1,1.231,61.22H9.985a1.231,1.231,0,0,1,1.231,1.231h0a1.231,1.231,0,0,1-1.231,1.231H1.231A1.231,1.231,0,0,1,0,62.451Z"
+                    transform="translate(0 -37.067)" fill="#9a9a9a"></path>
+                <path id="Caminho_44" data-name="Caminho 44"
+                    d="M89.187,89.187h0a1.231,1.231,0,0,1,1.74,0l6.19,6.19a1.231,1.231,0,0,1,0,1.74h0a1.231,1.231,0,0,1-1.74,0l-6.19-6.19a1.231,1.231,0,0,1,0-1.74Z"
+                    transform="translate(-53.783 -53.783)" fill="#9a9a9a"></path>
+                <path id="Caminho_45" data-name="Caminho 45"
+                    d="M18.3,18.3h0a1.231,1.231,0,0,1,1.74,0l6.21,6.19a1.231,1.231,0,0,1,0,1.76h0a1.231,1.231,0,0,1-1.74,0l-6.21-6.21a1.231,1.231,0,0,1,0-1.74Z"
+                    transform="translate(-10.861 -10.861)" fill="#9a9a9a"></path>
+            </svg>
+
+            <i class="fas fa-chevron-down"></i>
+            <h3 id="tempmin"></h3>
+            <i class="fas fa-chevron-up"></i>
+            <h3 id="tempmax"></h3>
+
+        </div>
+    </div>
+
+
+    <scripts rc="https://unpkg.com/axios/dist/axios.min.js">
+        </script>
+
+</body>
+<!-- <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+    * {
+        font-family: 'Nunito', sans-serif;
+    }
+
+    h3 {
+        color: #F08196;
+        font-size: 2em;
+    }
+
+    h3:last-of-type {
+        color: #4489FB;
+    }
+
+    h1,
+    p {
+        color: #5A5A5A;
+    }
+
+    #lol {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    i:last-of-type {
+        color: #4489FB;
+    }
+
+    i:first-of-type {
+        color: #F08196;
+    }
+
+    .card {
+        border: 2px solid #5A5A5A;
+        width: 900px;
+    }
+
+    .temperature {
+        position: absolute;
+        margin-left: 520px;
+        margin-top: -305px;
+        height: 300px;
+        width: 350px;
+    }
+
+    .temperature-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30%;
+        width: 100%;
+    }
+
+    .temperature-days {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .day {
+        padding: 0.3rem;
+        border: 2px solid #5A5A5A;
+        cursor: pointer;
+    }
+
+    .day:hover {
+        background: grey;
+    }
+
+    .temperature-numbers {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+</style> -->
+
+</html>
